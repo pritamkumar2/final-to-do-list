@@ -1,0 +1,55 @@
+* {
+  margin: 0%;
+  padding: 0%;
+}
+body {
+  background-color: rgb(192, 177, 104);
+}
+.date {
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  background-color: blueviolet;
+}
+.list {
+  display: flex;
+  height: 70%;
+  width: 100%;
+  margin: 10px 0 10px 0;
+  background-color: white;
+}
+.list ul {
+  width: 100%;
+  background-color: antiquewhite;
+}
+.list ul li {
+  background-color: aquamarine;
+  height: 60px;
+  width: auto;
+  margin: 8px 0px 8px 0px;
+  list-style: none;
+}
+.list ul li input[type="checkbox"]:checked ~ label {
+  text-decoration: line-through; /* Line through when checked */
+}
+.container-1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.list form {
+  width: 100%;
+}
+.sizing {
+  height: 100%;
+  width: 100%;
+}
+
+#fill{
+    width: 100%;
+}
+.hit{
+    width: 100%; 
+}
