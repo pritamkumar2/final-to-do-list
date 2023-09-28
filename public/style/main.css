@@ -1,55 +1,149 @@
-* {
-  margin: 0%;
-  padding: 0%;
-}
-body {
-  background-color: rgb(192, 177, 104);
-}
-.date {
-  height: 70px;
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  background-color: blueviolet;
-}
-.list {
-  display: flex;
-  height: 70%;
-  width: 100%;
-  margin: 10px 0 10px 0;
-  background-color: white;
-}
-.list ul {
-  width: 100%;
-  background-color: antiquewhite;
-}
-.list ul li {
-  background-color: aquamarine;
-  height: 60px;
-  width: auto;
-  margin: 8px 0px 8px 0px;
-  list-style: none;
-}
 .list ul li input[type="checkbox"]:checked ~ label {
   text-decoration: line-through; /* Line through when checked */
 }
-.container-1 {
+
+/* Reset some default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Set a background color and text color for the entire page */
+body {
+  background-color: #f0f0f0;
+  color: #333;
+  font-family: Arial, sans-serif;
+}
+
+/* Center the container on the page */
+.container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the date header */
+.date h1 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+/* Style the list container with a fixed height and scrollbar */
+.list {
+  max-height: 200px; /* Adjust the maximum height as needed */
+  overflow-y: auto;
+}
+
+/* Style the list items */
+.list ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+/* Style list items with checkboxes */
+.list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+/* Style the checkbox */
+.list input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+/* Style the label for list items */
+.list label {
+  flex-grow: 1;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Style the input container at the bottom */
+
+/* Style the input text box */
+.input-group-text {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px 0 0 5px;
+}
+
+/* Style the Add button */
+.btn-dark {
+  flex-shrink: 0;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  padding: 10px 20px;
+}
+
+/* Add a hover effect for the Add button */
+.btn-dark:hover {
+  background-color: #555;
+}
+.narrower-input {
+  width: 30%; /* You can adjust the width as needed */
+}
+
+/* Style the list container with a minimum height and scroll when needed */
+.list ul {
+  list-style: none;
+  min-height: 150px; /* Set the desired minimum height */
+  overflow-y: auto; /* Activate a vertical scrollbar when needed */
+}
+
+/* Style the fixed text add area */
+.input-container {
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 10%;
+  position: sticky;
+  bottom: 0;
+
+  padding: 15px;
+}
+
+/* Style the Add button */
+.btn-dark {
+  width: 30%;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.date {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%;
-}
-.list form {
-  width: 100%;
-}
-.sizing {
-  height: 100%;
-  width: 100%;
+  text-align: center;
+  background-color: rgb(0, 0, 0);
+  margin-bottom: 10%;
 }
 
-#fill{
-    width: 100%;
-}
-.hit{
-    width: 100%; 
+/* Increase text size and add font styles */
+.date h1 {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  width: 400px;
+  font-size: 24px; /* Adjust the font size as needed */
+  font-weight: bold; /* Add font weight for bold style */
+  font-family: Arial, sans-serif; /* Specify the desired font family */
+  color: #333; /* Set the text color */
+  text-transform: uppercase; /* Transform text to uppercase if desired */
+  margin: 10px 0; /* Add margin for spacing */
+  background-color: blueviolet;
+  color: #ccc;
+  border-radius: 20px;
 }
