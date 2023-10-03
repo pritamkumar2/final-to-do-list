@@ -118,7 +118,6 @@ app.get("/", async (req, res) => {
 ////////////////////////
 
 ///////getting data form the form
-
 app.post("/", async (req, res) => {
   let newTask = req.body.newItem;
   const newUser = req.body.userId;
@@ -132,23 +131,16 @@ app.post("/", async (req, res) => {
     res.redirect("/");
   } else {
     try {
-      // Insert the new item into the database
-
-      // here you are going to edit the costom add feture
       if (!newUser) {
-        //home route data is being render and it is fully functional to
+        // Insert the new item into the database for the home route
         await product.create({ name: newTask });
-        console.log("i am here");
         const updatedData = await product.find();
         console.log(updatedData);
-        res.render("../view/index.ejs", {
-          day: today,
-          month: month,
-          year: year,
-          newLiItems: updatedData, // Update the template with the new data
-        });
+
+        // Redirect to the home route
+        res.redirect("/");
       } else {
-        //finding and updating the user data
+        // Finding and updating the user data
         let data = await list
           .findOneAndUpdate(
             { name: newUser },
@@ -158,24 +150,19 @@ app.post("/", async (req, res) => {
         const updated = await list.findOne({ name: newUser }).exec();
         console.log(
           updated,
-          "<----------------------------form comming data got catched"
+          "<----------------------------form coming data got caught"
         );
-        res.render("../view/index.ejs", {
-          day: today,
-          month: month,
-          year: year,
-          newLiItems: updated.items, // Update the template with the new data
-          userId: newUser,
-        });
-      }
 
-      // Fetch the updated list data from the database
+        // Redirect to the user-specific route (e.g., /pritam)
+        res.redirect("/" + newUser);
+      }
     } catch (err) {
       console.log(err);
       res.redirect("/");
     }
   }
 });
+
 // delete the list items
 app.post("/delete", async (req, res) => {
   const check = req.body.checker;
