@@ -22,6 +22,26 @@ const itemList = new mongoose.Schema({
 /////create a collection
 const product = new mongoose.model("Item", itemList);
 
+const listSchema = new mongoose.Schema({
+  name: String,
+  items: [itemList],
+});
+const list = new mongoose.model("List", listSchema);
+
+const item1 = product({
+  name: "Welcome to your todolist!",
+});
+
+const item2 = product({
+  name: "Hit the + button to add a new item.",
+});
+
+const item3 = product({
+  name: "<-- Hit this to delete an item.",
+});
+
+const defaultItems = [item1, item2, item3];
+
 // /////////
 
 // array to find week month day etc
@@ -57,6 +77,26 @@ const today = weeks[day];
 /////////////////////////////////////
 // create an route and endpoint
 
+app.get("/:path", async (req, res) => {
+  const userId = req.params.path;
+
+  let data = await list.findOne({ name: userId }).exec();
+
+  if (!data) {
+    // Create a new document and immediately capture it
+    data = await list.create({ name: userId, items: defaultItems });
+    console.log(data, "<-------------- new document created"); // Log the created document
+  }
+
+  res.render("../view/index.ejs", {
+    day: today,
+    month: month,
+    year: year,
+    newLiItems: data.items, // Use data.items to render items
+    userId: userId,
+  });
+});
+
 app.get("/", async (req, res) => {
   try {
     // Fetch the list data from the database
@@ -81,7 +121,8 @@ app.get("/", async (req, res) => {
 
 app.post("/", async (req, res) => {
   let newTask = req.body.newItem;
-  console.log(newTask);
+  const newUser = req.body.userId;
+  console.log(newTask, newUser);
 
   const trimmedString = newTask.trim();
 
@@ -92,18 +133,43 @@ app.post("/", async (req, res) => {
   } else {
     try {
       // Insert the new item into the database
-      await product.create({ name: newTask });
+
+      // here you are going to edit the costom add feture
+      if (!newUser) {
+        //home route data is being render and it is fully functional to
+        await product.create({ name: newTask });
+        console.log("i am here");
+        const updatedData = await product.find();
+        console.log(updatedData);
+        res.render("../view/index.ejs", {
+          day: today,
+          month: month,
+          year: year,
+          newLiItems: updatedData, // Update the template with the new data
+        });
+      } else {
+        //finding and updating the user data
+        let data = await list
+          .findOneAndUpdate(
+            { name: newUser },
+            { $push: { items: { name: newTask } } }
+          )
+          .exec();
+        const updated = await list.findOne({ name: newUser }).exec();
+        console.log(
+          updated,
+          "<----------------------------form comming data got catched"
+        );
+        res.render("../view/index.ejs", {
+          day: today,
+          month: month,
+          year: year,
+          newLiItems: updated.items, // Update the template with the new data
+          userId: newUser,
+        });
+      }
 
       // Fetch the updated list data from the database
-      const updatedData = await product.find();
-      console.log(updatedData);
-
-      res.render("../view/index.ejs", {
-        day: today,
-        month: month,
-        year: year,
-        newLiItems: updatedData, // Update the template with the new data
-      });
     } catch (err) {
       console.log(err);
       res.redirect("/");
@@ -123,10 +189,6 @@ app.post("/delete", async (req, res) => {
     } else {
       console.log(`Item with name '${check}' deleted successfully.`);
     }
-
-    // Fetch the updated list data from the database
-    const updatedData = await product.find();
-
     // Send the updated data to the client
     res.redirect("/");
   } catch (error) {

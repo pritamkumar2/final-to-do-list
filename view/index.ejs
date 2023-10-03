@@ -17,6 +17,9 @@
       <h1><%= day %>, <%= month %>, <%= year %></h1>
     </div>
     <div class="container">
+      <% if(locals.userId){ %>
+      <div><h1><%=userId %></h1></div>
+      <% }%>
       <div class="list">
         <ul class="scrollable-list">
           <% newLiItems.forEach(element => {%>
@@ -45,6 +48,10 @@
           name="newItem"
           autocomplete="off"
         />
+
+        <% if(locals.userId){ %>
+        <input type="hidden" name="userId" value="<%= userId %>" />
+        <% } %>
         <button type="submit" class="btn btn-dark">Add</button>
       </form>
     </div>
