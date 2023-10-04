@@ -33,7 +33,7 @@ const item1 = product({
 });
 
 const item2 = product({
-  name: "Hit the + button to add a new item.",
+  name: "Hit the Add button to add a new item.",
 });
 
 const item3 = product({
@@ -164,26 +164,39 @@ app.post("/", async (req, res) => {
 });
 
 // delete the list items
+// delete the list items
 app.post("/delete", async (req, res) => {
   const check = req.body.checker;
-
+  const listName = req.body.checkerId;
+  console.log(check, listName, "<----------------------saleee last kam");
   try {
-    // Use findOneAndDelete to find and delete the object by name
-    const deletedItem = await product.findOneAndDelete({ name: check });
-
-    if (!deletedItem) {
-      console.log(`Item with name '${check}' not found.`);
+    if (!listName) {
+      // Use findOneAndDelete to find and delete the object by name
+      const deletedItem = await product.findOneAndDelete({ name: check });
+      const updatedData = await product.find();
+      console.log(updatedData);
+      // Redirect to the home route
+      console.log("i am here buddy");
+      res.redirect("/");
     } else {
-      console.log(`Item with name '${check}' deleted successfully.`);
+      console.log("i am romming here buddy");
+      // Finding and updating the user data using async/await
+      const data = await list.findOneAndUpdate(
+        { name: listName },
+        { $pull: { items: { name: check } } },
+        { new: true } // Add { new: true } to get the updated document
+      );
+      // Redirect to the user-specific route (e.g., /pritam)
+      res.redirect("/" + listName);
     }
-    // Send the updated data to the client
-    res.redirect("/");
   } catch (error) {
     console.error("Error deleting item:", error);
     res.status(500).json({ message: "Internal server error" });
   }
 });
+
 // running the server on port 3000
 app.listen(port, (req, res) => {
   console.log(`listening on port ${port}`);
 });
+ 

@@ -14,6 +14,11 @@ body {
   background-color: #f0f0f0;
   color: #333;
   font-family: Arial, sans-serif;
+  background-image: url("../img/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-color: #f0f0f0;
 }
 
 /* Center the container on the page */
@@ -27,9 +32,11 @@ body {
 }
 
 /* Style the date header */
+.date {
+  margin-top: 24px;
+}
 .date h1 {
   font-size: 18px;
-  margin-bottom: 10px;
 }
 
 /* Style the list container with a fixed height and scrollbar */
@@ -125,7 +132,7 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  background-color: rgb(0, 0, 0);
+  margin-top: 10px;
   margin-bottom: 10%;
 }
 
@@ -143,7 +150,75 @@ body {
   color: #333; /* Set the text color */
   text-transform: uppercase; /* Transform text to uppercase if desired */
   margin: 10px 0; /* Add margin for spacing */
-  background-color: blueviolet;
-  color: #ccc;
+  background-color: #c8c4a6;
+  color: #000000;
   border-radius: 20px;
+}
+/* nav bar work goose here */
+
+/* Style the header and navigation bar */
+header {
+  background-color: #000000; /* Background color for the header */
+  color: #fff; /* Text color for the header */
+  padding: 10px 0; /* Add some padding for spacing */
+}
+
+nav {
+  max-width: 1200px; /* Limit the width of the navigation bar */
+  margin: 0 auto; /* Center the navigation bar horizontally */
+  display: flex;
+  justify-content: space-between; /* Space items horizontally */
+  align-items: center; /* Center items vertically */
+  padding: 0 20px; /* Add padding to the navigation bar */
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem; /* Adjust the font size */
+}
+
+.logo img {
+  width: 50px; /* Adjust the logo image size */
+  margin-right: 9px; /* Add spacing between the logo and text */
+}
+
+.navbar-links {
+  list-style: none; /* Remove bullet points from the list */
+}
+
+.navbar-links li {
+  display: inline; /* Display list items horizontally */
+  margin-right: 20px; /* Add spacing between list items */
+}
+
+.navbar-links li:last-child {
+  margin-right: 0; /* Remove spacing from the last list item */
+}
+
+.navbar-links a {
+  text-decoration: none; /* Remove underline from links */
+  color: #64db70; /* Text color for links */
+  font-weight: bold; /* Make the links bold */
+  font-size: 1rem; /* Adjust the font size */
+  font-family: "Hard Coders", monospace;
+}
+
+/* Style the links on hover */
+.navbar-links a:hover {
+  text-decoration: underline; /* Add underline on hover */
+}
+.logo span {
+  color: #00f415;
+  font-family: "Hard Coders", monospace;
+}
+.navbar-links {
+  margin-top: 15px;
+  font-family: "Hard Coders", monospace;
+}
+.user {
+  font-family: "Hard Coders", monospace;
+}
+.list li {
+  font-family: "Hard Coders", monospace;
 }
