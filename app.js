@@ -3,16 +3,15 @@ import express from "express";
 import ejs from "ejs";
 import mongoose from "mongoose";
 const app = express();
-const port = process.env.port || 3000 ;
+const port = process.env.port || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 // ///////////////////////////
 
 // conection for mongodb and create an db
-const uri = "mongodb+srv://pritam:Kumar30@clustertodolist.cvkvo5h.mongodb.net/";
+const uri = "mongodb+srv://pritam:Kumar@30@cluster0.19py5on.mongodb.net/?retryWrites=true&w=majority";
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-/////////////////////////
 
 // creating a schema to create format of collection
 const itemList = new mongoose.Schema({
@@ -199,4 +198,3 @@ app.post("/delete", async (req, res) => {
 app.listen(port, (req, res) => {
   console.log(`listening on port ${port}`);
 });
- 
