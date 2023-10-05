@@ -10,7 +10,7 @@ app.use(express.static("public"));
 // ///////////////////////////
 
 // conection for mongodb and create an db
-const uri = "mongodb+srv://pritam:pritam123@cluster0.hyz2ftj.mongodb.net/app?retryWrites=true&w=majority";
+const uri = "mongodb+srv://pritam1:pritam1234@cluster0.hyz2ftj.mongodb.net/?retryWrites=true&w=majority";
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 /////////////////////////
 
