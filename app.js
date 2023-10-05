@@ -11,7 +11,14 @@ app.use(express.static("public"));
 
 // conection for mongodb and create an db
 const uri = "mongodb+srv://pritam:Kumar30@clustertodolist.cvkvo5h.mongodb.net/";
-mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
+    console.log("Connected to MongoDB");
+    // Start your Express server here
+  })
+  .catch((error) => {
+    console.error("Error connecting to MongoDB:", error);
+  });
 /////////////////////////
 
 // creating a schema to create format of collection
