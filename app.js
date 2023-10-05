@@ -10,8 +10,9 @@ app.use(express.static("public"));
 // ///////////////////////////
 
 // conection for mongodb and create an db
-const uri = "mongodb+srv://pritam:Kumar@30@cluster0.19py5on.mongodb.net/?retryWrites=true&w=majority";
+const uri = "mongodb+srv://pritam:Kumar30@clustertodolist.cvkvo5h.mongodb.net/";
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+/////////////////////////
 
 // creating a schema to create format of collection
 const itemList = new mongoose.Schema({
@@ -198,3 +199,4 @@ app.post("/delete", async (req, res) => {
 app.listen(port, (req, res) => {
   console.log(`listening on port ${port}`);
 });
+ 
