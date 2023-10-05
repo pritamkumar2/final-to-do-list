@@ -10,7 +10,7 @@ app.use(express.static("public"));
 // ///////////////////////////
 
 // conection for mongodb and create an db
-const uri = "mongodb+srv://pritam:Kumar30@clustertodolist.cvkvo5h.mongodb.net/";
+const uri = "mongodb+srv://pritam:pritam123@cluster0.hyz2ftj.mongodb.net/app?retryWrites=true&w=majority";
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 /////////////////////////
 
@@ -29,7 +29,7 @@ const listSchema = new mongoose.Schema({
 const list = new mongoose.model("List", listSchema);
 
 const item1 = product({
-  name: "Welcome to your todolist!",
+  name: "want personal task use(/your name) at the end of url",
 });
 
 const item2 = product({
