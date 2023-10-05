@@ -37,7 +37,9 @@
     <div class="container">
       <% if(locals.userId){ %>
       <div class="user"><h1><%=userId %></h1></div>
-      <% }%>
+      <% }else{%>
+      <div class="user"><h1>List</h1></div>
+      <%}%>
       <div class="list">
         <ul class="scrollable-list">
           <% newLiItems.forEach(element => {%>

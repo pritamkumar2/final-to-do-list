@@ -3,14 +3,14 @@ import express from "express";
 import ejs from "ejs";
 import mongoose from "mongoose";
 const app = express();
-const port = 3000;
+const port = process.env.port || 3000 ;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 // ///////////////////////////
 
 // conection for mongodb and create an db
-const uri = "mongodb://127.0.0.1/toList";
+const uri = "mongodb+srv://pritam:Kumar30@clustertodolist.cvkvo5h.mongodb.net/";
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 /////////////////////////
 
